@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flack</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="{{url_for('static', filename='index.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script id="channel-template" type="text/x-handlebars-template">
+            <option>
+                {% raw -%}
+                    {{ channel }}
+                {%- endraw%}
+            </option>
+        </script>
+        <script id="message-template" type="text/x-handlebars-template">
+            <div class="alert alert-primary">
+                {% raw -%}
+                    {{ message }}
+                {%- endraw%}
+            </div>
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Flack</h1>
+            <div class="input-group mb-3">
+                <input id="username" type="text" class="form-control" placeholder="Enter your username" aria-label="Enter your username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id="sign-in" class="btn btn-outline-secondary" type="button">Sign-in</button>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input id="channel" type="text" class="form-control" placeholder="Enter new channel" aria-label="Enter new channel" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id="add-channel" class="btn btn-outline-secondary" type="button">Add</button>
+                </div>
+            </div>
+            <div id="user"></div>
+            <select class="custom-select custom-select-sm" id="channels">
+                <option disabled selected>Channels</option>
+            </select>
+            <div id="chosenChannel"></div>
+            <hr>
+            <div id="messages" class="pre-scrollable">
+            </div>
+            <div class="input-group mb-3">
+                <input id="message" type="text" class="form-control" placeholder="Message..." aria-label="Message..." aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id="send-message" class="btn btn-outline-secondary" type="button">Send</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
